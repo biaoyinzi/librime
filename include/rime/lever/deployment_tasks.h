@@ -92,6 +92,12 @@ class BackupConfigFiles : public DeploymentTask {
   bool Run(Deployer* deployer);
 };
 
+class CopyBiaoyinziFiles : public DeploymentTask {
+ public:
+  CopyBiaoyinziFiles(TaskInitializer arg = TaskInitializer()) {}
+  bool Run(Deployer* deployer);
+};
+
 class CleanupTrash : public DeploymentTask {
  public:
   CleanupTrash(TaskInitializer arg = TaskInitializer()) {}

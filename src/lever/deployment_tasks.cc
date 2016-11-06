@@ -469,6 +469,31 @@ bool BackupConfigFiles::Run(Deployer* deployer) {
   return !failure;
 }
 
+bool CopyBiaoyinziFiles::Run(Deployer* deployer) {
+  LOG(INFO) << "copying biaoyinzi files.";
+
+  fs::path shared_data_path(deployer->shared_data_dir);
+  if (!fs::exists(shared_data_path))
+    return false;
+
+  fs::path user_data_path(deployer->user_data_dir);
+  if (!fs::exists(user_data_path))
+    return false;
+
+  fs::path src_path(shared_data_path / "custom_phrase.txt");
+  fs::path dest_path(user_data_path / "custom_phrase.txt");
+
+  boost::system::error_code ec;
+  fs::copy_file(src_path, dest_path, fs::copy_option::overwrite_if_exists, ec);
+  if (ec) {
+      LOG(ERROR) << "error copying file " << "custom_phrase.txt";
+      return false;
+  } else {
+      LOG(INFO) << "copied " << "custom_phrase.txt";
+      return true;
+  }
+}
+
 bool CleanupTrash::Run(Deployer* deployer) {
   LOG(INFO) << "clean up trash.";
   fs::path user_data_path(deployer->user_data_dir);

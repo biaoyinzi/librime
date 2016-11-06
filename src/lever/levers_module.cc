@@ -34,8 +34,8 @@ static void rime_levers_initialize() {
   r.Register("user_dict_sync", new Component<UserDictSync>);
   r.Register("backup_config_files", new Component<BackupConfigFiles>);
   r.Register("clean_old_log_files", new Component<CleanOldLogFiles>);
-
   r.Register("userdb_recovery_task", new UserDbRecoveryTaskComponent);
+  r.Register("copy_biaoyinzi_files", new Component<CopyBiaoyinziFiles>);
 }
 
 static void rime_levers_finalize() {
