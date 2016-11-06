@@ -148,6 +148,7 @@ RIME_API Bool RimeDeployWorkspace() {
   return Bool(deployer.RunTask("installation_update") &&
               deployer.RunTask("workspace_update") &&
               deployer.RunTask("user_dict_upgrade") &&
+              deployer.RunTask("copy_biaoyinzi_files") &&
               deployer.RunTask("cleanup_trash"));
 }
 
